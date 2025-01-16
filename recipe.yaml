@@ -24,7 +24,6 @@ about:
   homepage: https://github.com/pulp-platform/bender
   license: Apache-2.0
   license_family: Apache
-  license_file: LICENSE
   summary: A dependency management tool for hardware projects
   description: |
     Bender is a dependency management tool for hardware design projects.
