@@ -21,7 +21,7 @@ tests:
     - bender --version
 
 about:
-  home: https://github.com/pulp-platform/bender
+  homepage: https://github.com/pulp-platform/bender
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
@@ -30,5 +30,5 @@ about:
     Bender is a dependency management tool for hardware design projects.
     It provides a way to define dependencies among IPs, execute unit tests, 
     and verify that the source files are valid input for various simulation and synthesis tools.
-  dev_url: https://github.com/pulp-platform/bender
+  repository: https://github.com/pulp-platform/bender
 
