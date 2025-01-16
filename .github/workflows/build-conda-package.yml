@@ -4,8 +4,8 @@ on:
 jobs:
   build-conda:
     runs-on: ubuntu-latest
-    image:
-      quay.io/condaforge/linux-anvil-x86_64
+    container:
+      image: quay.io/condaforge/linux-anvil-x86_64
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
