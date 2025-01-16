@@ -1,0 +1,34 @@
+context:
+  version: "0.28.1"
+
+package:
+  name: bender
+  version: ${{ version }}
+
+source:
+  git: https://github.com/pulp-platform/bender
+  tag: v${{ version }}
+
+build:
+  script: cargo install --root ${PREFIX} --path .
+
+requirements:
+  build:
+    - ${{ compiler('rust') }}
+
+tests:
+  - script:
+    - bender --version
+
+about:
+  home: https://github.com/pulp-platform/bender
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: A dependency management tool for hardware projects
+  description: |
+    Bender is a dependency management tool for hardware design projects.
+    It provides a way to define dependencies among IPs, execute unit tests, 
+    and verify that the source files are valid input for various simulation and synthesis tools.
+  dev_url: https://github.com/pulp-platform/bender
+
