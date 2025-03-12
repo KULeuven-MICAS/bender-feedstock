@@ -7,7 +7,7 @@ package:
 
 source:
   git: https://github.com/pulp-platform/bender
-  tag: v${{ version }}
+  tag: v0.28.1
 
 build:
   script: cargo install --root ${PREFIX} --path .
