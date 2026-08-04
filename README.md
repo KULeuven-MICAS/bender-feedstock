@@ -31,5 +31,3 @@ To build this package locally, you'll need an environment with:
 * `anaconda-client`
 * `rattler-build`
 * `git`
-
-

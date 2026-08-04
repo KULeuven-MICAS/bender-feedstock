@@ -1,23 +1,35 @@
 name: build-conda
+
 on:
   workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
 jobs:
   build-conda:
-    runs-on: ubuntu-latest
-    container:
-      image: quay.io/condaforge/linux-anvil-x86_64:alma8
-    defaults:
-      run:
-        shell: bash -el {0}
+    name: Build ${{ matrix.platform }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: linux-64
+            runner: ubuntu-latest
+          - platform: osx-arm64
+            runner: macos-14
+    runs-on: ${{ matrix.runner }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Activate conda explicitly
+        uses: actions/checkout@v4
+      - name: Verify build platform
         run: |
-          echo "/opt/conda/bin" >> $GITHUB_PATH
-          echo "CONDA_PREFIX=/opt/conda" >> $GITHUB_ENV
-          echo "source /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc
+          case "${{ matrix.platform }}:$(uname -s):$(uname -m)" in
+            linux-64:Linux:x86_64|osx-arm64:Darwin:arm64) ;;
+            *) echo "Runner does not match requested platform" >&2; exit 1 ;;
+          esac
       - name: Build conda package
         uses: prefix-dev/rattler-build-action@v0.2.23
         with:
           recipe-path: recipe.yaml
+          artifact-name: bender-${{ matrix.platform }}
