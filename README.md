@@ -31,3 +31,10 @@ To build this package locally, you'll need an environment with:
 * `anaconda-client`
 * `rattler-build`
 * `git`
+
+## Publishing
+
+After a change is merged into `main`, CI uploads both platform packages to the
+[`KULeuven-MICAS` Anaconda.org channel](https://anaconda.org/KULeuven-MICAS/bender).
+Add an Anaconda.org API token with upload access as the `ANACONDA_API_TOKEN`
+repository Actions secret before merging.
