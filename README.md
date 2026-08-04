@@ -32,4 +32,7 @@ To build this package locally, you'll need an environment with:
 * `rattler-build`
 * `git`
 
+## Publishing
 
+After a change is merged into `main`, CI uploads both platform packages to the
+[`KULeuven-MICAS` Anaconda.org channel](https://anaconda.org/KULeuven-MICAS/bender).
